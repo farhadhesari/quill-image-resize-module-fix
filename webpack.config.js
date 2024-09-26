@@ -1,7 +1,7 @@
 var path = require("path");
 
 module.exports = {
-	mode: "development", // Set the mode to 'development' or 'production'
+	mode: "production", // Set the mode to 'development' or 'production'
 	entry: "./src/ImageResize.js",
 	output: {
 		path: __dirname,

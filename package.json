@@ -1,12 +1,12 @@
 {
 	"name": "quill-image-resize-module",
-	"version": "3.0.0",
+	"version": "3.0.1",
 	"description": "A module for Quill rich text editor to allow images to be resized.",
 	"main": "image-resize.min.js",
 	"scripts": {
 		"start": "webpack serve --config webpack.config.js",
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"release": "webpack -p --progress --colors",
+		"release": "webpack --progress",
 		"dev": "webpack --progress --watch",
 		"lint": "eslint --ext js,es6 src",
 		"fixlint": "eslint --fix --ext js,es6 src"
@@ -27,6 +27,10 @@
 		{
 			"name": "Wikia",
 			"url": "https://github.com/Wikia"
+		},
+		{
+			"name": "Farhad Hesari",
+			"url": "https://github.com/farhadhesari"
 		}
 	],
 	"license": "MIT",
