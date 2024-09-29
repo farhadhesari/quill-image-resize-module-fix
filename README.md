@@ -1,32 +1,62 @@
-# Quill ImageResize Module
+### Installation
 
-A module for Quill rich text editor to allow images to be resized.
+To install the package, run the following command:
 
-Also see [quill-image-drop-module](https://github.com/kensnyder/quill-image-drop-module),
-a module that enables copy-paste and drag/drop for Quill.
+\```sh
+npm install quill-v2-image-resize-module
+\```
 
-## Demo
+### Angular with SSR
 
-[Plunker](https://plnkr.co/edit/gq708AOrSBOWSlHcFslG?p=preview)
+install quill and ngx-quill packages then
 
-## Usage
+In your component.html:
+
+```html
+<div #editor></div>
+```
+
+In your component.ts:
+
+```typescript
+    constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+        if (isPlatformBrowser(this.platformId)) {
+          this.initializeEditor();
+        }
+    }
+
+    @ViewChild('editor') editor!: ElementRef;
+    editorQuill: any;
+
+    async initializeEditor() {
+        const Quill = (await import('quill')).default;
+        (window as any).Quill = Quill;
+        const ImageResize = (await import('quill-v2-image-resize-module')).default;
+        Quill.register('modules/imgResize', ImageResize);
+        this.editorQuill = new Quill(this.editor.nativeElement, {
+        modules: this.editorModules,
+        theme: 'snow',
+        placeholder: 'type here...',
+        });
+    }
+```
 
 ### Webpack/ES6
 
 ```javascript
-import Quill from 'quill';
-import { ImageResize } from 'quill-image-resize-module';
+import Quill from "quill";
+import { ImageResize } from "quill-image-resize-module";
 
-Quill.register('modules/imageResize', ImageResize);
+Quill.register("modules/imgResize", ImageResize);
 
 const quill = new Quill(editor, {
-    // ...
-    modules: {
-        // ...
-        imageResize: {
-            // See optional "config" below
-        }
-    }
+	// ...
+	modules: {
+		// ...
+		imgResize: {
+			// See optional "config" below
+		},
+	},
 });
 ```
 
@@ -40,26 +70,27 @@ Copy image-resize.min.js into your web root or include from node_modules
 
 ```javascript
 var quill = new Quill(editor, {
-    // ...
-    modules: {
-        // ...
-        ImageResize: {
-            // See optional "config" below
-        }
-    }
+	// ...
+	modules: {
+		// ...
+		imgResize: {
+			// See optional "config" below
+		},
+	},
 });
 ```
 
 ### Config
 
 For the default experience, pass an empty object, like so:
+
 ```javascript
 var quill = new Quill(editor, {
-    // ...
-    modules: {
-        // ...
-        ImageResize: {}
-    }
+	// ...
+	modules: {
+		// ...
+		imgResize: {},
+	},
 });
 ```
 
@@ -68,13 +99,13 @@ the default is to include all modules:
 
 ```javascript
 const quill = new Quill(editor, {
-    // ...
-    modules: {
-        // ...
-        ImageResize: {
-            modules: [ 'Resize', 'DisplaySize', 'Toolbar' ]
-        }
-    }
+	// ...
+	modules: {
+		// ...
+		imgResize: {
+			modules: ["Resize", "DisplaySize", "Toolbar"],
+		},
+	},
 });
 ```
 
@@ -88,19 +119,19 @@ The look and feel can be controlled with options:
 
 ```javascript
 var quill = new Quill(editor, {
-    // ...
-    modules: {
-        // ...
-        ImageResize: {
-            // ...
-            handleStyles: {
-                backgroundColor: 'black',
-                border: 'none',
-                color: white
-                // other camelCase styles for size display
-            }
-        }
-    }
+	// ...
+	modules: {
+		// ...
+		ImageResize: {
+			// ...
+			handleStyles: {
+				backgroundColor: "black",
+				border: "none",
+				color: white,
+				// other camelCase styles for size display
+			},
+		},
+	},
 });
 ```
 
@@ -112,19 +143,19 @@ The look and feel can be controlled with options:
 
 ```javascript
 var quill = new Quill(editor, {
-    // ...
-    modules: {
-        // ...
-        ImageResize: {
-            // ...
-            displayStyles: {
-                backgroundColor: 'black',
-                border: 'none',
-                color: white
-                // other camelCase styles for size display
-            }
-        }
-    }
+	// ...
+	modules: {
+		// ...
+		imgResize: {
+			// ...
+			displayStyles: {
+				backgroundColor: "black",
+				border: "none",
+				color: white,
+				// other camelCase styles for size display
+			},
+		},
+	},
 });
 ```
 
@@ -136,25 +167,25 @@ The look and feel can be controlled with options:
 
 ```javascript
 var quill = new Quill(editor, {
-    // ...
-    modules: {
-        // ...
-        ImageResize: {
-            // ...
-            toolbarStyles: {
-                backgroundColor: 'black',
-                border: 'none',
-                color: white
-                // other camelCase styles for size display
-            },
-            toolbarButtonStyles: {
-                // ...
-            },
-            toolbarButtonSvgStyles: {
-                // ...
-            },
-        }
-    }
+	// ...
+	modules: {
+		// ...
+		imgResize: {
+			// ...
+			toolbarStyles: {
+				backgroundColor: "black",
+				border: "none",
+				color: white,
+				// other camelCase styles for size display
+			},
+			toolbarButtonStyles: {
+				// ...
+			},
+			toolbarButtonSvgStyles: {
+				// ...
+			},
+		},
+	},
 });
 ```
 
@@ -166,20 +197,20 @@ the module setup.
 For example,
 
 ```javascript
-import { Resize, BaseModule } from 'quill-image-resize-module';
+import { Resize, BaseModule } from "quill-image-resize-module";
 
 class MyModule extends BaseModule {
-    // See src/modules/BaseModule.js for documentation on the various lifecycle callbacks
+	// See src/modules/BaseModule.js for documentation on the various lifecycle callbacks
 }
 
 var quill = new Quill(editor, {
-    // ...
-    modules: {
-        // ...
-        ImageResize: {
-            modules: [ MyModule, Resize ],
-            // ...
-        }
-    }
+	// ...
+	modules: {
+		// ...
+		imgResize: {
+			modules: [MyModule, Resize],
+			// ...
+		},
+	},
 });
 ```

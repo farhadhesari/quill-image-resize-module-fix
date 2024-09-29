@@ -13,7 +13,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/kensnyder/quill-image-resize-module.git"
+		"url": "git+https://github.com/farhadhesari/quill-image-resize-module-fix"
 	},
 	"keywords": [
 		"quill",
