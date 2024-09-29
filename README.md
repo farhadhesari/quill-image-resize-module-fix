@@ -2,9 +2,9 @@
 
 To install the package, run the following command:
 
-\```bash
+```bash
 npm install quill-v2-image-resize-module
-\```
+```
 
 ### Angular with SSR
 
