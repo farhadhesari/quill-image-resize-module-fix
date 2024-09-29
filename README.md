@@ -2,7 +2,7 @@
 
 To install the package, run the following command:
 
-\```sh
+\```bash
 npm install quill-v2-image-resize-module
 \```
 
