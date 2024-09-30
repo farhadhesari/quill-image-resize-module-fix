@@ -8,7 +8,7 @@ npm install quill-v2-image-resize-module
 
 ### Angular with SSR
 
-install quill and ngx-quill packages then
+First install quill and ngx-quill packages then install this package.
 
 In your component.html:
 
@@ -39,6 +39,13 @@ In your component.ts:
         placeholder: 'type here...',
         });
     }
+```
+
+In your project's package.json add quill css and script:
+
+```json
+	"styles": ["src/styles.scss", "node_modules/quill/dist/quill.snow.css", "node_modules/quill/dist/quill.core.css"],
+	"scripts": ["node_modules/quill/dist/quill.core.js"],
 ```
 
 ### Webpack/ES6
