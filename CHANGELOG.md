@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.0.3 - September 30, 2024
+
+-   Minor change
+
 ## v3.0.2 - September 29, 2024
 
 -   Fix issues
